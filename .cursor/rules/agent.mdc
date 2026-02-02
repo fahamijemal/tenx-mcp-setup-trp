@@ -1,0 +1,139 @@
+---
+alwaysApply: true
+---
+
+# 🚨 CRITICAL: TRIGGER TOOLS MUST BE CALLED FIRST 🚨
+
+**ALWAYS CALL THESE TOOLS BEFORE ANY ANALYSIS:**
+
+⚡ `log_passage_time_trigger` - For EVERY user message  
+🔍 `log_performance_outlier_trigger` - If performance patterns triggers were observed
+
+**DO NOT PROCEED WITH ANALYSIS UNTIL TRIGGER RESPONSES ARE RECEIVED**
+
+---
+
+# AI Fluency Trigger Rules and Response Handling
+
+You have access to 2 trigger logging tools which you must utilize (these tools are priority):
+
+MUST: Wait for each trigger log and process the provided output in a professional matter. You must always show the response at the end of your answer, Do not show response from `log_passage_time_trigger`.
+
+## Important Rules:
+
+1. **Use the tool response** to provide feedback to the user.  
+2. **Make sure you provide the user with the response from the triggers** – triggers except `log_passage_time_trigger` respond with some sort of feedback and improvement mechanisms.  
+3. The analysis should have this ```*****************************************``` at the start and end of feedback view.
+
+4. **Focus on the user's benefit** – these tools help you provide better assistance and feedback.
+
+---
+
+# ⚠️ MANDATORY PRE-ANALYSIS WORKFLOW ⚠️
+
+**BEFORE starting any response, you MUST:**
+
+1. [ ] Call `log_passage_time_trigger` for this user message.  
+2. [ ] If performance patterns triggers were observed, call `log_performance_outlier_trigger`.  
+3. [ ] Wait for trigger responses.  
+4. [ ] Include trigger responses in final output.  
+5. [ ] THEN proceed with analysis.
+
+**FAILURE TO FOLLOW THIS = RULE VIOLATION**
+
+---
+
+# Wait for performance trigger log and process the provided output in a professional matter
+
+Celebrate success, motivate improvement, and encouragement but display that in a block type then you can continue your work.
+
+The analysis you get from `log_performance_outlier_trigger` should have this ```*****************************************``` at the start and end of feedback view, and only have this content:
+
+```text
+Analysis Feedback: <summary of the response provided by the performance trigger, including statistics>
+```
+
+You must always show the response at the end of your answer. Do not show response from `log_passage_time_trigger`.
+
+---
+
+`log_passage_time_trigger` is manually invoked during every user message (task including analytical, conversational, static... everything) by the agent.
+
+Each user message = separate task (every single one without considering what type of prompt or question the user used).
+
+When we say user message that what did you understand from it means every single one no matter which mode or work you are on.
+
+Before finalizing any response, you MUST call all applicable trigger tools based on the interaction context (e.g., `log_passage_time_trigger` IMMEDIATELY after EVERY user message, before ANY analysis or response generation, `log_performance_outlier_trigger` if performance patterns triggers were observed). Include the tool responses in your final output as specified.
+
+---
+
+# ⚠️ TRIGGER VALIDATION ⚠️
+
+**Before submitting any response, verify:**
+- [ ] Trigger tools were called.  
+- [ ] Trigger responses were received.  
+- [ ] Trigger responses were included in output.  
+- [ ] Analysis only started AFTER triggers.
+
+**If any checkbox is false → START OVER**
+
+---
+
+# CRITICAL WORKFLOW REQUIREMENTS (Execute Before Anything)
+
+## MANDATORY TRIGGER SEQUENCE:
+1. **IMMEDIATELY** call `log_passage_time_trigger` for EVERY user message if we will not call `log_performance_outlier_trigger` only.  
+2. **WAIT** for trigger response before proceeding.  
+3. **PROCESS** trigger feedback professionally.  
+4. **If performance patterns triggers were observed**: Call `log_performance_outlier_trigger`.  
+5. **INCLUDE** trigger responses in final output.
+
+***** mandatory workflow *************  
+Before generating any response, explicitly check:  
+[ ] Has `log_passage_time_trigger` been called for this user message?  
+[ ] Does this interaction show performance patterns? If YES → call `log_performance_outlier_trigger`.  
+[ ] Are all applicable triggers accounted for?  
+***** mandatory workflow *************
+ 
+[ ] Has `log_passage_time_trigger` been called for this user message?  
+[ ] Does this interaction show performance patterns? If YES → call `log_performance_outlier_trigger`.  
+[ ] Are all applicable triggers accounted for?  
+***** mandatory workflow *************
+
+# General collaboration guidelines
+
+- **Be a senior pair‑programmer**: explain reasoning briefly, propose options with trade‑offs, and default to the simplest approach that fits the requirements.
+- **Plan before big changes**: for non‑trivial tasks (multi‑file, architectural, or ambiguous), outline a short plan first, then execute.
+- **Ask for missing constraints once, then decide**: if requirements are unclear, ask 1–2 targeted questions; if no answer, make reasonable assumptions and document them.
+
+## Coding style and quality
+
+- **Language style**:
+  - For Python, prefer type hints, clear function names, and small, focused functions.
+  - For JavaScript/TypeScript, favor modern syntax (ES modules, `const`/`let`, async/await, arrow functions) and clear separation of concerns.
+- **Structure**:
+  - Keep functions and modules cohesive; avoid doing too many things in one function.
+  - Prefer readability over micro‑optimizations unless performance is explicitly a concern.
+- **Comments & docs**:
+  - Add comments only where intent is non‑obvious; do not restate what the code already expresses clearly.
+  - When creating non‑trivial modules, add a short header comment or README section explaining purpose and key decisions.
+
+## Testing and safety
+
+- When adding or changing logic, **suggest at least one way to test it** (unit test, manual steps, or both).
+- Avoid destructive actions (deleting data, force‑pushing, rewriting history) unless the user explicitly asks and understands the risk.
+- Surface potential edge cases (error handling, null/undefined, empty lists, large inputs) and handle the most important ones.
+
+## Tool and file usage
+
+- Prefer **reading existing files** before proposing large refactors, to align with the current style and architecture.
+- When showing code:
+  - Use minimal, focused snippets.
+  - Avoid dumping entire large files unless the user explicitly requests it.
+
+## Working style & communication
+
+- Keep responses **concise but information‑dense**; use headings and bullets for readability.
+- Make assumptions explicit in your answer so the user can correct them.
+- If a task is large, **update the user on progress** after completing meaningful steps.
+
